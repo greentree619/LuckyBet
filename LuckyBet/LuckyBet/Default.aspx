@@ -1187,7 +1187,14 @@
 
                     //// Slot Machine Spin & Dice Roll Implementation
                     var rst = "";                                                                   
-                    var rst = "7,3,2,3"//FIXME PostAjax("/Ajax/game_result.ashx", "round=" + round);                   
+                    var rst = "7,3,2,3"//FIXME PostAjax("/Ajax/game_result.ashx", "round=" + round);
+                    //{{Demo result
+                    var boxResult = Math.floor(Math.random() * 100) % 24;
+                    var dice1Result = Math.floor(Math.random() * 100) % 6;
+                    var dice2Result = Math.floor(Math.random() * 100) % 6;
+                    var dice3Result = Math.floor(Math.random() * 100) % 6;
+                    rst = boxResult + "," + dice1Result + "," + dice2Result + "," + dice3Result
+                    //}}Demo result
                     if (rst == "") location.href = "main.aspx";                                    
                     var grst = new Array(4);
                     grst = rst.split(',');
@@ -1258,9 +1265,9 @@
                 if (sectime == 106) {
                     bflat = new Audio("mobile/assets/music/start_add_chip.mp3"); bflat.play();                    
 
-                    usercoin = "999.0";//FIXMEPostAjax("/Ajax/GetuserCoin.ashx", "user_id=" + user_id);
-                    _total = parseFloat(usercoin);
-                    _money = 0;
+                    //FIXME usercoin = "999.0";//FIXMEPostAjax("/Ajax/GetuserCoin.ashx", "user_id=" + user_id);
+                    //FIXME _total = parseFloat(usercoin);
+                    //FIXME _money = 0;
 
                     self.$('lhj_ben_txt_total').innerHTML = _total;
                     self.$('lhj_ben_txt_money').innerHTML = _money;
