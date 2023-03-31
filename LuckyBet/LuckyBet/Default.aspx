@@ -51,15 +51,15 @@
         zhibo_id = parseInt(zhibo_id);
         zhibo_id = 15;
         var room = 1;
-        var usercoin = "999.0";//PostAjax("/Ajax/GetuserCoin.ashx", "user_id=" + user_id);
+        var usercoin = "999.0";//FIXMEPostAjax("/Ajax/GetuserCoin.ashx", "user_id=" + user_id);
         usercoin = parseFloat(usercoin);        
         
-        //PostAjax("/Ajax/loginstate.ashx", "category=2&user_id=" + user_id + "&loginfir=" + 1);  //  Preserve sign-in state
+        //FIXMEPostAjax("/Ajax/loginstate.ashx", "category=2&user_id=" + user_id + "&loginfir=" + 1);  //  Preserve sign-in state
         //setInterval(function () {
         //   PostAjax("/Ajax/loginstate.ashx", "category=2&user_id=" + user_id);
         //}, 30 * 1000);
         
-        //PostAjax("/Ajax/tvroom_manager.ashx", "user_id=" + user_id + "&room=" + room + "&state=0"); //  Entering and leaving the live room
+        //FIXMEPostAjax("/Ajax/tvroom_manager.ashx", "user_id=" + user_id + "&room=" + room + "&state=0"); //  Entering and leaving the live room
         //$(window).on("beforeunload", function () {
         //    PostAjax("/Ajax/tvroom_manager.ashx", "user_id=" + user_id + "&room=" + room + "&state=1");
         //    return "Buy now!!!";
@@ -253,8 +253,8 @@
                 num_rate = 1;
                 document.getElementById("1chip").style.opacity = "1";
             }                       
-            //bflat = new Audio("/files/audio/chose_machine.mp3");    //sound effect
-            //bflat.play();
+            //FIXMEbflat = new Audio("/files/audio/chose_machine.mp3");    //sound effect
+            //FIXMEbflat.play();
         }
 
         var btn_pressState = 0;
@@ -264,8 +264,8 @@
         function slotButtonClick(e, obj, txtid, segid, angle) {    
             obj.style.opacity = '1';
             if (this._isrun == false) {     //sound effect
-                //bflat = new Audio("/files/audio/collect_coin_in.mp3");
-                //bflat.play();
+                //FIXMEbflat = new Audio("/files/audio/collect_coin_in.mp3");
+                //FIXMEbflat.play();
             }                
             betmoeny(txtid);    // Betting amount increase processing
             display_segment(segid, document.getElementById(txtid).value, 4, 12, 20, angle);
@@ -829,21 +829,21 @@
                 
                     setTimeout(function () {    ///Last Highlight/Disappear
                         document.getElementById(aa).style.display = 'block';
-                        //bflat = new Audio("/files/audio/bet.mp3");     //sound effect
-                        //bflat.play();
+                        //FIXMEbflat = new Audio("/files/audio/bet.mp3");     //sound effect
+                        //FIXMEbflat.play();
                         setTimeout(function () {
                             document.getElementById(bb).style.display = 'block';
-                            //bflat = new Audio("/files/audio/bet.mp3");     //sound effect
-                            //bflat.play();
+                            //FIXMEbflat = new Audio("/files/audio/bet.mp3");     //sound effect
+                            //FIXMEbflat.play();
                             setTimeout(function () {
                                 document.getElementById(cc).style.display = 'block';
-                                //bflat = new Audio("/files/audio/bet.mp3");     //sound effect
-                                //bflat.play();
+                                //FIXMEbflat = new Audio("/files/audio/bet.mp3");     //sound effect
+                                //FIXMEbflat.play();
                                 setTimeout(function () {
                                     if (dd != 0) {
                                         document.getElementById(dd).style.display = 'block';
-                                        //bflat = new Audio("/files/audio/bet.mp3");     //sound effect
-                                        //bflat.play();
+                                        //FIXMEbflat = new Audio("/files/audio/bet.mp3");     //sound effect
+                                        //FIXMEbflat.play();
                                     }                                    
                                     setTimeout(function () {
                                         document.getElementById(aa).style.display = 'none';
@@ -859,14 +859,14 @@
                 }
             }
             else {  // Handling normal spin results
-                //if (winbox == 1 || winbox == 2 || winbox == 7 || winbox == 13 || winbox == 19) {  bflat = new Audio("mobile/assets/music/Y101.mp3");  bflat.play(); }
-                //if (winbox == 8 || winbox == 9 || winbox == 21) { bflat = new Audio("mobile/assets/music/Y102.mp3"); bflat.play(); }
-                //if (winbox == 3 || winbox == 15 || winbox == 14) { bflat = new Audio("mobile/assets/music/Y103.mp3"); bflat.play(); }
-                //if (winbox == 10 || winbox == 20 || winbox == 22) { bflat = new Audio("mobile/assets/music/Y104.mp3"); bflat.play(); }
-                //if (winbox == 4 || winbox == 5) { bflat = new Audio("mobile/assets/music/Y105.mp3"); bflat.play(); }
-                //if (winbox == 16 || winbox == 17) { bflat = new Audio("mobile/assets/music/Y106.mp3"); bflat.play(); }
-                //if (winbox == 11 || winbox == 12) { bflat = new Audio("mobile/assets/music/Y107.mp3"); bflat.play(); }
-                //if (winbox == 23 || winbox == 24) { bflat = new Audio("mobile/assets/music/Y108.mp3"); bflat.play(); }
+                //FIXMEif (winbox == 1 || winbox == 2 || winbox == 7 || winbox == 13 || winbox == 19) {  bflat = new Audio("mobile/assets/music/Y101.mp3");  bflat.play(); }
+                //FIXMEif (winbox == 8 || winbox == 9 || winbox == 21) { bflat = new Audio("mobile/assets/music/Y102.mp3"); bflat.play(); }
+                //FIXMEif (winbox == 3 || winbox == 15 || winbox == 14) { bflat = new Audio("mobile/assets/music/Y103.mp3"); bflat.play(); }
+                //FIXMEif (winbox == 10 || winbox == 20 || winbox == 22) { bflat = new Audio("mobile/assets/music/Y104.mp3"); bflat.play(); }
+                //FIXMEif (winbox == 4 || winbox == 5) { bflat = new Audio("mobile/assets/music/Y105.mp3"); bflat.play(); }
+                //FIXMEif (winbox == 16 || winbox == 17) { bflat = new Audio("mobile/assets/music/Y106.mp3"); bflat.play(); }
+                //FIXMEif (winbox == 11 || winbox == 12) { bflat = new Audio("mobile/assets/music/Y107.mp3"); bflat.play(); }
+                //FIXMEif (winbox == 23 || winbox == 24) { bflat = new Audio("mobile/assets/music/Y108.mp3"); bflat.play(); }
 
                 var betid = "lhj_bet_txt_" + type;
                 var betnum = parseInt(this.$(betid).value);
@@ -1256,7 +1256,7 @@
                 }   //////////  sectime == 0
 
                 if (sectime == 106) {
-                    //bflat = new Audio("mobile/assets/music/start_add_chip.mp3"); bflat.play();                    
+                    //FIXMEbflat = new Audio("mobile/assets/music/start_add_chip.mp3"); bflat.play();                    
 
                     usercoin = "999.0";//PostAjax("/Ajax/GetuserCoin.ashx", "user_id=" + user_id);
                     _total = parseFloat(usercoin);
@@ -1329,7 +1329,7 @@
                         + "&doub=" + doub + "&singl=" + singl + "&big=" + big + "&small=" + small + "&zhibo_id=" + zhibo_id);
                         bet_state = 1;
                     }                                    
-                    //bflat = new Audio("mobile/assets/music/stop_add_chip.mp3"); bflat.play();
+                    //FIXMEbflat = new Audio("mobile/assets/music/stop_add_chip.mp3"); bflat.play();
                 }
 
                 if (sectime < 20) {
@@ -1341,11 +1341,11 @@
                     document.getElementById("red_lamp").style.opacity = "1";
                 }
                 
-                //if (sectime < 31 && sectime > 20) { bflat = new Audio("mobile/assets/music/count_down.mp3"); bflat.play(); }    //Beep when 20 seconds left, voice countdown from 3 seconds go!
-                //if (sectime == 4) { bflat = new Audio("mobile/assets/music/countdown_3.mp3"); bflat.play(); }
-                //if (sectime == 3) { bflat = new Audio("mobile/assets/music/countdown_2.mp3"); bflat.play(); }
-                //if (sectime == 2) { bflat = new Audio("mobile/assets/music/countdown_1.mp3"); bflat.play(); }
-                //if (sectime == 1) { bflat = new Audio("mobile/assets/music/countdown_go.mp3"); bflat.play(); }
+                //FIXMEif (sectime < 31 && sectime > 20) { bflat = new Audio("mobile/assets/music/count_down.mp3"); bflat.play(); }    //Beep when 20 seconds left, voice countdown from 3 seconds go!
+                //FIXMEif (sectime == 4) { bflat = new Audio("mobile/assets/music/countdown_3.mp3"); bflat.play(); }
+                //FIXMEif (sectime == 3) { bflat = new Audio("mobile/assets/music/countdown_2.mp3"); bflat.play(); }
+                //FIXMEif (sectime == 2) { bflat = new Audio("mobile/assets/music/countdown_1.mp3"); bflat.play(); }
+                //FIXMEif (sectime == 1) { bflat = new Audio("mobile/assets/music/countdown_go.mp3"); bflat.play(); }
 
                 display_segment("countdown", sectime, 3, 12, 20, 2);
 
@@ -1394,10 +1394,10 @@
          </form>
     </div>
         <script>
-            //document.getElementById('bgsound').loop = true;
-            //document.getElementById('bgsound').play();
+            //FIXMEdocument.getElementById('bgsound').loop = true;
+            //FIXMEdocument.getElementById('bgsound').play();
             
-            var msg = "0,0,0/0,0,0/0,0,0/0,0,0/0,0,0/0,0,0/0,0,0";//PostAjax("/Ajax/spinlog.ashx", "");
+            var msg = "0,0,0/0,0,0/0,0,0/0,0,0/0,0,0/0,0,0/0,0,0";//FIXMEPostAjax("/Ajax/spinlog.ashx", "");
             var myArray = new Array(7);
             myArray = msg.split('/');
             var semi = new Array(3);
