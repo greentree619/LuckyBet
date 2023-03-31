@@ -1187,7 +1187,7 @@
 
                     //// Slot Machine Spin & Dice Roll Implementation
                     var rst = "";                                                                   
-                    var rst = "2,1,2,3,4,5"//PostAjax("/Ajax/game_result.ashx", "round=" + round);                   
+                    var rst = "7,3,2,3"//FIXME PostAjax("/Ajax/game_result.ashx", "round=" + round);                   
                     if (rst == "") location.href = "main.aspx";                                    
                     var grst = new Array(4);
                     grst = rst.split(',');
@@ -1408,7 +1408,7 @@
             //})
             //}}
             
-            var msg = "0,0,0/0,0,0/0,0,0/0,0,0/0,0,0/0,0,0/0,0,0";//FIXMEPostAjax("/Ajax/spinlog.ashx", "");
+            var msg = "1,2,3/4,5,6/7,8,9/1,2,3/4,5,6/7,8,9/1,2,3";//FIXMEPostAjax("/Ajax/spinlog.ashx", "");
             var myArray = new Array(7);
             myArray = msg.split('/');
             var semi = new Array(3);

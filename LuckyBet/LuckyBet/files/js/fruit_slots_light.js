@@ -13,7 +13,7 @@ var slotlogcss = ['_b_apple', '_s_apple', '_b_coconut', '_b_watermelons', '_s_wa
 var taisailogcss = ['_dice_small_', '_dice_big_'];
 var evoddlogcss = ['_dice_even_', '_dice_odd_'];
 
-///   각도조절가능한 7segment 생성
+///   Angle-adjustable 7-segment creation
 function display_segment(id, value, digit, dwidth, dheight, dangle) {
     var segtext = value.toString();
     var spacetext = "";
@@ -43,7 +43,7 @@ function display_segment(id, value, digit, dwidth, dheight, dangle) {
 }
 
 
-/// 프로퍼티 설정 ///
+/// Set Property ///
 function wLaoHuJi(id) {
     this.frameid = id;
     this._doc = document;
@@ -56,7 +56,7 @@ function wLaoHuJi(id) {
         maxbet: 9999,
     };
     this._piecelist = [];
-    // 배당률
+    // rate per assignment.
     this._multitype = {
         "b_bar": 120,
         "s_bar": 50,
@@ -74,12 +74,12 @@ function wLaoHuJi(id) {
     this._piecelistmulti = {};
     this._piecelisttype = {};
 
-    this._startbox = 1;         //上次结果，此次的起点  시작점
+    this._startbox = 1;         //上次结果，此次的起点  starting point
     this._endbox = 1;          //这是这次的结果
     this._jumpnum = 1;        //这些需要算出来
     this._currentshowlist = [1];
 
-    //(状态值)(게임상태)
+    //(状态值)(game state)
     this._isfirstbet = true;
     this._isrun = false;
     //定时器(timer)
@@ -124,7 +124,7 @@ wLaoHuJi.prototype.rand = function (min, max) {
     return parseInt(Math.random() * (max - min + 1) + min);
 }
 
-wLaoHuJi.prototype._getpieceinfo = function (i, j) {     // 스핀박스 포괄정보(박스형, css클라스명, 박스번호, 박스이름)
+wLaoHuJi.prototype._getpieceinfo = function (i, j) {     // Spinbox comprehensive information (box type, css class name, box number, box name)
     switch (i + "-" + j) {
         case "0-0": return { "type": "orange", "css": "b_orange", "list": 21, "multi": "b_orange" };
         case "0-1": return { "type": "alarm", "css": "b_alarm", "list": 22, "multi": "b_alarm" };
@@ -154,7 +154,7 @@ wLaoHuJi.prototype._getpieceinfo = function (i, j) {     // 스핀박스 포괄�
     }
 };
 
-////  스핀시 이동하는 박스 현시하기 ////
+////  Displaying boxes that move on spin ////
 wLaoHuJi.prototype.showbox = function (index) {
     var i, len, tpleft, tptop, box = '';
     var cssString = '';
@@ -177,7 +177,7 @@ wLaoHuJi.prototype.showbox = function (index) {
     }
 }
 
-// 슬롯머신 시작과 끝에 속도 증가/감소 조정(사작:300,250,210...150/ 끝:70, ...,300,360,430ms간격으로 증가/감소)
+// Adjust speed increase/decrease at start and end of slot machine (Start: 300,250,210...150/ End: 70, ...,300,360,430 ms increase/decrease)
 wLaoHuJi.prototype.changeshowlist = function (jumpindex) {
     var i,
         len = this._currentshowlist.length,
@@ -278,7 +278,7 @@ wLaoHuJi.prototype.changeshowlist = function (jumpindex) {
     }
 }
 
-/////****   슬롯머신 스핀 플레이  /////
+/////****   slot machine spin play  /////
 wLaoHuJi.prototype.run = function () {
     var self = this._self,
         time = 500,
@@ -305,24 +305,24 @@ wLaoHuJi.prototype.run = function () {
     timerdo();
 }
 
-/////*****   게임플레이/배팅 결과 산출하기 start *****/////
+/////*****   Calculate gameplay/betting results start *****/////
 wLaoHuJi.prototype.result = function () {
 
-    var winbox = this._endbox;  // 스핀닝 endbox
+    var winbox = this._endbox;  // spinning endbox
     var taisai = 0;
     var evodd = 1;
-    var type = this._piecelisttype[winbox];  // 스핀닝 endbox형        
+    var type = this._piecelisttype[winbox];  // spinning endbox type        
 
-    // 슬롯머신 로그기록
+    // slot machine log
     var cssName = slotlogcss[winbox - 1];
     var text = "<div style='width:75px;height:80px' class='" + cssName + "'></div>"
     if (text.length) {        
         $('<li />', { html: text }).prependTo('ul.slot_log')
     }
    
-    if (type == "cha" || winbox == 6) {  //luck에서 스핀엔드 했을시 처리
+    if (type == "cha" || winbox == 6) {  //Handling when spin-end in luck
 
-        bflat = new Audio("../files/audio/luck.mp3"); //효과음
+        bflat = new Audio("../files/audio/luck.mp3"); //effect sound
         bflat.play();
 
         var rst = PostAjax("/Ajax/game_result.ashx");
@@ -336,7 +336,7 @@ wLaoHuJi.prototype.result = function () {
 
         if (ee != 0) {
             var showtimet = 1500;
-            if (ee == 2 || ee == 3) {////꼬리
+            if (ee == 2 || ee == 3) {////tail
                 showtimet = 3500;
                 var tail_len = 0;
                 if (ee == 2) tail_len = 3;
@@ -345,7 +345,7 @@ wLaoHuJi.prototype.result = function () {
                     (function (i) {
                         this.setTimeout(function () {
                             document.getElementById(i).style.display = 'block';
-                            bflat = new Audio("../files/audio/bet.mp3"); //효과음
+                            bflat = new Audio("../files/audio/bet.mp3"); //effect sound
                             bflat.play();
                         }, 200 * (i - winbox));
                     })(i);
@@ -361,7 +361,7 @@ wLaoHuJi.prototype.result = function () {
                         var ii = ir + tail_len;
                         if (ii > 24) { ii = ii % 24; }
                         document.getElementById(ii).style.display = 'block';
-                        bflat = new Audio("../files/audio/hit.mp3");     //효과음
+                        bflat = new Audio("../files/audio/hit.mp3");     //effect sound
                         bflat.play();
                         i++;
                         var t = 0;
@@ -377,20 +377,20 @@ wLaoHuJi.prototype.result = function () {
 
             setTimeout(function () {
                 document.getElementById(aa).style.display = 'block';
-                bflat = new Audio("../files/audio/bet.mp3");     //효과음
+                bflat = new Audio("../files/audio/bet.mp3");     //effect sound
                 bflat.play();
                 setTimeout(function () {
                     document.getElementById(bb).style.display = 'block';
-                    bflat = new Audio("../files/audio/bet.mp3");     //효과음
+                    bflat = new Audio("../files/audio/bet.mp3");     //effect sound
                     bflat.play();
                     setTimeout(function () {
                         document.getElementById(cc).style.display = 'block';
-                        bflat = new Audio("../files/audio/bet.mp3");     //효과음
+                        bflat = new Audio("../files/audio/bet.mp3");     //effect sound
                         bflat.play();
                         setTimeout(function () {
                             if (dd != 0) {
                                 document.getElementById(dd).style.display = 'block';
-                                bflat = new Audio("../files/audio/bet.mp3");     //효과음
+                                bflat = new Audio("../files/audio/bet.mp3");     //effect sound
                                 bflat.play();
                             }
                             setTimeout(function () {
@@ -410,7 +410,7 @@ wLaoHuJi.prototype.result = function () {
     if (dice_point > 10) taisai = 1;
     if (dice_point % 2 == 0) evodd = 0;
 
-    // 다이스 로그기록  start
+    // Dice logging start
     var csstaisai = taisailogcss[taisai];
     var text = "<div style='width:75px;height:80px' class='" + csstaisai + "'></div>"
     if (text.length) {
@@ -423,14 +423,14 @@ wLaoHuJi.prototype.result = function () {
     }
 
 }
-/////*****   게임플레이/배팅 결과 산출하기 end *****/////
+/////*****   Calculating Gameplay/Betting Results end *****/////
 
 
-/////*****  페지가 로딩될때 실행되는 초기화 및 기본로직 /////
+/////*****  Initialization and basic logic executed when the page loads /////
 wLaoHuJi.prototype.init = function () {
     var i, j, piecewidth, pieceheight, piecehtml, bethtml,  self = this._self;
 
-    ///  플레이부분(lhj_piece_run)과 배팅부분(lhj_bet)으로 나누어진 기본 div 속성값 설정 ///
+    ///  Set basic div attribute values divided into play part (lhj_piece_run) and betting part (lhj_bet) ///
     this._mainDiv = this.$(this.frameid);
     
     piecewidth = (this._config.cardwidth + this._config.margin) * 7 + this._config.margin + 2;    
@@ -442,7 +442,7 @@ wLaoHuJi.prototype.init = function () {
     this._mainDiv.style.padding = "0";
     this._mainDiv.id = "Game_mainframe";
 
-    ///  플레이부분(lhj_piece_run)과 배팅부분(lhj_bet)으로 나누어진 기본 div 안장 ///
+    ///  Basic div saddle divided into play part (lhj_piece_run) and betting part (lhj_bet) ///
     mainhtml = "<div style = 'position: relative;top:0px;left:0px;width:" + piecewidth + "px;height:" + pieceheight + "px;'><div id='lhj_piece_bg' style='position:absolute;top:0,left:0;z-index:101;'></div><div id='lhj_piece_run' style='position:absolute;top:0,left:0;z-index:102;'></div></div>";
     this._mainDiv.innerHTML = mainhtml;
     this.frame.piece.bg = this.$('lhj_piece_bg'); 
@@ -450,9 +450,9 @@ wLaoHuJi.prototype.init = function () {
     this.frame.bet = this.$('lhj_bet'); 
         
     piecehtml = [];
-    piecehtml.push("<canvas id='countdown' style='width:80px; height:30px; position: absolute; left:630px; top:150px'></canvas>");  ///카운트다운 7segment
+    piecehtml.push("<canvas id='countdown' style='width:80px; height:30px; position: absolute; left:630px; top:150px'></canvas>");  ///count down 7segment
 
-    ////   슬롯머신 스핀닝박스 안장(24개) 현재는 배경이미지로 대체(현시안함)
+    ////   Slot machine spinning box saddles (24 pieces) Currently replaced with background images (not shown)
     for (i = 0; i < 7; i++) {
         for (j = 0; j < 7; j++) {
             if (i == 0 || j == 0 || i == 6 || j == 6) {
@@ -467,22 +467,22 @@ wLaoHuJi.prototype.init = function () {
         }
     }
 
-    ////    다이스롤링 결과 포인트값 현시 7segment안장
+    ////    Dice rolling result point value display 7 segment saddle
     var diceleft = mainframeBorder + 224;
     piecehtml.push("<canvas id='taisai_result' style='width:76px; height:40px; position: absolute; left:445px; top:386px'></canvas>");
-    ////    1번 다이스 안장  ////
+    ////    1's Dice set  ////
     piecehtml.push("<div id='dicediv0' style='position: absolute; width:70px; height:70px; left:" + diceleft + "px; top:460px;'>");
     piecehtml.push("<image id='dice0' width='70' height='70' src ='/files/image/images_n/dice_1.png' />");
     piecehtml.push("</div>");
-    ////    2번 다이스 안장  ////
+    ////    2's Dice set  ////
     piecehtml.push("<div id='dicediv4' style='position: absolute; width:70px; height:70px; left:" + (diceleft + 96) + "px; top:460px;'>");
     piecehtml.push("<image id='dice4' width='70' height='70' src ='/files/image/images_n/dice_1.png' />");
     piecehtml.push("</div>");
-    ////    3번 다이스 안장  ///
+    ////    3's Dice set  ///
     piecehtml.push("<div id='dicediv3' style='position: absolute; width:70px; height:70px; left:" + (diceleft + 194) + "px; top:460px;'>");
     piecehtml.push("<image id='dice3' width='70' height='70' src ='/files/image/images_n/dice_1.png' />");
     piecehtml.push("</div>");    
-    ////   다이스 대,소,홋,단 박스안장  (초기 숨김상태)
+    ////   Dice large, small, hot, single box saddle (initial hidden state)
     var diceBoxleft = mainframeBorder + 183;
     piecehtml.push("<div id='diceBox_big' style = 'width:85px; height:85px; background:url(../files/image/images/dice_big.png); position: absolute; left:" + diceBoxleft + "px; top:544px; display: none'></div>");
     piecehtml.push("<div id='diceBox_small' style = 'width:85px; height:85px; background:url(../files/image/images/dice_small.png); position: absolute; left:" + (diceBoxleft + 87) + "px; top:544px; display: none'></div>");
@@ -492,13 +492,13 @@ wLaoHuJi.prototype.init = function () {
     piecehtml.push("<audio id='bflat'> </audio>");
     this.frame.piece.bg.innerHTML = piecehtml.join('');
 
-    display_segment("taisai_result", dice_point, 2, 12, 20, 2);   /// 다이스롤링 포인트값 7segment현시(초기 0)
+    display_segment("taisai_result", dice_point, 2, 12, 20, 2);   /// Dice rolling point value 7 segment display (initial 0)
 
-    ////   카운트 다운 7segment 현시   ////
+    ////   Countdown 7 segment display   ////
     var xmlHttp;
     function srvTime() {
-        if (window.XMLHttpRequest) {//분기하지 않으면 IE에서만 작동된다.
-            xmlHttp = new XMLHttpRequest(); // IE 7.0 이상, 크롬, 파이어폭스 등
+        if (window.XMLHttpRequest) {//If you don't branch, it only works in IE.
+            xmlHttp = new XMLHttpRequest(); // IE 7.0 or higher, Chrome, Firefox, etc.
             //xmlHttp.open('HEAD', 'http://localhost:64965/login.aspx', false);
             xmlHttp.open('HEAD', window.location.href.toString(), false);
             xmlHttp.setRequestHeader("Content-Type", "text/html");
@@ -521,7 +521,7 @@ wLaoHuJi.prototype.init = function () {
     round = dday * 1000 + round;
 
 
-    ////   카운트 다운 7segment 현시   ////
+    ////   Countdown 7 segment display   ////
     sectime = 120 - remain_gtime;
     setInterval(function () {
         sectime = sectime - 1;
@@ -544,7 +544,7 @@ wLaoHuJi.prototype.init = function () {
     }, 1000);
        
 
-    /// 스핀구현
+    /// spin implementation
     var spin_play = function () {
         var rst = "";
         var rst = PostAjax("/Ajax/game_result.ashx", "round=" + round);
@@ -584,7 +584,7 @@ wLaoHuJi.prototype.init = function () {
         self._jumpnum = 24 * 4 + step; //这些需要算出来
         self.run();
 
-        // 다이사이 다이스 롤링 및 결과보여주기        
+        // Rolling dice and showing results        
         setTimeout(function () {
             dice_point = dice1_point + dice2_point + dice3_point;            
             display_segment("taisai_result", dice_point, 2, 12, 20, 2);

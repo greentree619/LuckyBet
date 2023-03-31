@@ -96,7 +96,7 @@
         var usercoin = PostAjax("/Ajax/GetuserCoin.ashx", "user_id=" + user_id);       
         usercoin = parseFloat(usercoin);
 
-        //if (zhubo_state == "1") alert("주보중");
+        //if (zhubo_state == "1") alert("week reporting on...");
         
 
     </script>
@@ -237,7 +237,7 @@
 
                         function update() {
 
-                            if (bg_sound_state == 0) { // 게임 배경음악
+                            if (bg_sound_state == 0) { // game background music
                                 bg_music.stop();
                             } else {
                                 if (bg_sound == 1) {
@@ -247,89 +247,89 @@
                             }
 
                             if (eff_sound_state == 1) {
-                                if (spin_eff_sound == 1) { // 스핀 효과음
+                                if (spin_eff_sound == 1) { // spin effect sound
                                     spin_sound.play();
                                     spin_eff_sound = 0;
                                 }
 
-                                if (betbtn_eff_sound == 1) {// 배팅버튼 효과음
+                                if (betbtn_eff_sound == 1) {// betting button effect sound
                                     bet_sound.play();
                                     betbtn_eff_sound = 0;
                                 }
 
-                                if (finshbtn_eff_sound == 1) {// 이전값으로 배팅버튼 효과음
+                                if (finshbtn_eff_sound == 1) {// to prev value, betting button effect sound
                                     betfinish_sound.play();
                                     finshbtn_eff_sound = 0;
                                 }
 
-                                if (initbtn_eff_sound == 1) {// 배팅값초기화버튼 효과음
+                                if (initbtn_eff_sound == 1) {// Betting value reset button effect sound
                                     betinit_sound.play();
                                     initbtn_eff_sound = 0;
                                 }
 
-                                if (selchip_eff_sound == 1) {// 배팅단위결정버튼 효과음
+                                if (selchip_eff_sound == 1) {// Betting unit decision button effect sound
                                     selchip_sound.play();
                                     selchip_eff_sound = 0;
                                 }
 
-                                if (luck_eff_sound == 1) {// luck 효과음
+                                if (luck_eff_sound == 1) {// luck effect sound
                                     luck_sound.play();
                                     luck_eff_sound = 0;
                                 }
-                                if (luckspin_eff_sound == 1) {// luck 스핀 효과음
+                                if (luckspin_eff_sound == 1) {// luck spin effect sound
                                     luck_spin.play();
                                     luckspin_eff_sound = 0;
                                 }
-                                if (countdown_eff_sound == 1) {// 카운트다운 경고음
+                                if (countdown_eff_sound == 1) {// countdown beep
                                     countdown_sound.play();
                                     countdown_eff_sound = 0;
                                 }
-                                if (countdown_1_sound == 1) {// 카운트다운 "one"
+                                if (countdown_1_sound == 1) {// count down "one"
                                     countdown_1.play();
                                     countdown_1_sound = 0;
                                 }
-                                if (countdown_2_sound == 1) {// 카운트다운 "two"
+                                if (countdown_2_sound == 1) {// count down "two"
                                     countdown_2.play();
                                     countdown_2_sound = 0;
                                 }
-                                if (countdown_3_sound == 1) {// 카운트다운 "three"
+                                if (countdown_3_sound == 1) {// count down "three"
                                     countdown_3.play();
                                     countdown_3_sound = 0;
                                 }
-                                if (countdown_go_sound == 1) {// 카운트다운 "three"
+                                if (countdown_go_sound == 1) {// count down "three"
                                     countdown_go.play();
                                     countdown_go_sound = 0;
                                 }
-                                if (betting_start_sound == 1) {// 베팅시작
+                                if (betting_start_sound == 1) {// Start betting
                                     betting_start.play();
                                     betting_start_sound = 0;
                                 }
-                                if (betting_stop_sound == 1) {// 베팅시작
+                                if (betting_stop_sound == 1) {// Start betting
                                     betting_stop.play();
                                     betting_stop_sound = 0;
                                 }
 
-                                if (apple_sound_eff == 1) {// 사과
+                                if (apple_sound_eff == 1) {// apple
                                     apple_sound.play();
                                     apple_sound_eff = 0;
                                 }
-                                if (orenge_sound_eff == 1) {// 오렌지
+                                if (orenge_sound_eff == 1) {// orange
                                     orenge_sound.play();
                                     orenge_sound_eff = 0;
                                 }
-                                if (mongo_sound_eff == 1) {// 망고
+                                if (mongo_sound_eff == 1) {// mango
                                     mongo_sound.play();
                                     mongo_sound_eff = 0;
                                 }
-                                if (bell_sound_eff == 1) {// 종
+                                if (bell_sound_eff == 1) {// bell
                                     bell_sound.play();
                                     bell_sound_eff = 0;
                                 }
-                                if (watermellon_sound_eff == 1) {// 수박
+                                if (watermellon_sound_eff == 1) {// melon
                                     watermellon_sound.play();
                                     watermellon_sound_eff = 0;
                                 }
-                                if (star_sound_eff == 1) {// 별
+                                if (star_sound_eff == 1) {// star
                                     star_sound.play();
                                     star_sound_eff = 0;
                                 }
@@ -337,7 +337,7 @@
                                     seven_sound.play();
                                     seven_sound_eff = 0;
                                 }
-                                if (bar_sound_eff == 1) {// 바
+                                if (bar_sound_eff == 1) {// bar
                                     bar_sound.play();
                                     bar_sound_eff = 0;
                                 }

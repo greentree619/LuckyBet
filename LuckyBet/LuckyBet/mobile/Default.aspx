@@ -177,7 +177,7 @@
                 
             }      
           
-            ///   각도조절가능한 7segment 생성
+            ///   Angle-adjustable 7-segment creation
             function display_segment(id, value, digit, dwidth, dheight, dangle) {
                 var segtext = value.toString();
                 var spacetext = "";
