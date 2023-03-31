@@ -1,0 +1,19 @@
+﻿body {
+    margin:20px
+}
+
+table th{
+   height:29px;
+   font-size:17px;
+   text-align:center;
+}
+
+table td{
+   height:28px;
+   font-size:14px;
+   text-align:center;
+}
+
+table td a {
+    font-size: 14px
+}

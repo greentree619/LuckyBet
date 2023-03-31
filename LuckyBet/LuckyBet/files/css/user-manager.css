@@ -1,0 +1,88 @@
+﻿.user-manager {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 50;
+	zoom: 1;
+	width: 194px;
+	padding: 1px;
+	border: 1px solid #e5e5e5;
+	border-color: rgba(0, 0, 0, 0.0);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.14);
+	border-radius: 4px;
+	background: #fff
+}
+
+.user-manager .userWrap {
+	background: 0;
+	border-radius: 0;
+	padding: 8px 0 4px
+}
+
+.user-manager b.underline {
+	display: block;
+	border-top: 8px solid white;
+	border-bottom: 8px solid white;
+	margin: 0 18px;
+	background: #ebebeb;
+	height: 1px;
+	overflow: hidden
+}
+
+.user-manager p.icon {
+	padding: 0 18px
+}
+
+.user-manager p.icon i {
+	width: 43px;
+	height: 43px;
+	margin: 3px 0 5px 4px;
+	display: inline-block
+}
+
+.user-manager p.icon b.underline {
+	margin: 5px 0 4px;
+	border: 0
+}
+
+.user-manager h6 {
+	zoom: 1;
+	color: #333;
+	font-size: 14px;
+	padding: 8px 20px 0;
+	font-weight: bold;
+	font-family: Microsoft yahei;
+	line-height: 14px;
+	margin: 0;
+	word-wrap: break-word
+}
+
+.user-manager a:hover .arrows, .user-manager .more-list:hover .arrows {
+	background-position: -20px -250px
+}
+
+.user-manager a, .user-manager .more-list {
+	zoom: 1;
+	cursor: pointer;
+	color: #333;
+	height: 22px;
+	line-height: 22px;
+	display: block;
+	padding: 0 18px 0 42px;
+	background: url(//vr0.6rooms.com/imges/base/userManager_ico_v5.png) no-repeat -1000px 0
+}
+
+.user-manager a:hover, .user-manager .more-list:hover {
+	background-color: #f6f6f6;
+	color: #ff4e00;
+	text-decoration: none
+}
+
+.user-manager p {
+	display: none;
+	zoom: 1
+}
+
+.user-manager p.main_1 {
+	display: block
+}

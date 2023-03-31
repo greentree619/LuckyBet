@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="/files/css/common.css" rel="stylesheet" />
+    <script src="/files/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="/files/js/segment-display.js"></script>
+    <script type="text/javascript" src="/files/js/jquery.jqGauges.min.js"></script>
+    <script type="text/javascript" src="/files/js/jquery.mobile-1.4.5.js"></script>
+    <script src="phaser/phaser.min.js"></script>
+    <script type="text/javascript" src="/files/js/slots_mobile_light.js"></script>
+
+    <script src="/files/js/jwplayer.js"></script>
+    <script>jwplayer.key = "gESqN5xJRRkppyDGnZbzKugu91grnuoIhVplCg==";</script>
+
+    <style type="text/css">
+        body {
+            margin-left: 0px;
+            margin-top: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+    </style>
+    <script>
+        function digit7_total(id, value, digit) {
+            var segtext = value.toString();
+            var spacetext = "";
+            if (segtext.length < digit) {
+                for (var i = 0; i < digit - segtext.length; i++) {
+                    spacetext = spacetext + ' ';
+                }
+            }
+            if (segtext.indexOf(".") != -1) {
+                spacetext = spacetext + ' ';
+            }
+            $(document).ready(function () {
+                $(id).jqSegmentedDisplay({
+                    background: '#5B2D00',
+                    border: {
+                        padding: 0,
+                        lineWidth: 0,
+                        strokeStyle: '#5B2D00'
+                    },
+                    digits: digit,
+                    segmentMode: 'sevenSegment',
+                    text: spacetext + segtext,
+                    textForeground: '#F3E967',
+                    textForegroundUnlit: 'rgba(60, 44, 0, 0.5)'
+                });
+            });
+        }
+
+
+        function display_segment(id, value, digit, dwidth, dheight, dangle) {
+            var segtext = value.toString();
+            var spacetext = "";
+            if (segtext.length < digit) {
+                for (var i = 0; i < digit - segtext.length; i++) {
+                    spacetext = spacetext + ' ';
+                }
+            }
+            var patternDgt = "";
+            for (var i = 0; i < digit; i++) {
+                patternDgt = patternDgt + "#";
+            }
+            var display = new SegmentDisplay(id);
+            display.pattern = patternDgt;
+            display.cornerType = 2;
+            display.displayType = 7;
+            display.displayAngle = dangle;
+            display.digitHeight = dheight;
+            display.digitWidth = dwidth;
+            display.digitDistance = 2;
+            display.segmentWidth = 3;
+            display.segmentDistance = 0.5;
+            display.colorOn = "rgba(255, 255, 64, 0.9)";
+            display.colorOff = "rgba(100, 106, 130, 0.1)";
+            display.setValue(spacetext + segtext);
+        }
+
+
+    </script>
+</head>
+<body>
+    
+    <div id='wowza_player' style='width: 720px; height: 400px; left: 0px; top: 0px;'></div>
+    <!--<script id='player_embed' src='//player.cloud.wowza.com/hosted/t9hp0wfl/wowza.js' type='text/javascript'></script>-->
+    <!--<script id='player_embed' src='//player.cloud.wowza.com/hosted/t9hp0wfl/wowza.js' type='text/javascript'></script>-->
+    <script>
+
+            $(document).ready(function () {
+                jwplayer("wowza_player").setup({
+                    playlist: [{
+                        'sources': [
+                            {
+                                'file': 'http://desi.tvonip.biz/ustvnow/syfy/playlist.m3u8',
+                                //'file': 'rtmp://tianhe01.top:1935/mylive/stream',
+                            }
+
+                        ]
+                    }],
+                    width: 720,
+                    height: 400,
+                    autostart: 'true',
+                    stretching: 'exactfit',
+                    displayclick: 'none',
+                    //hlshtml: 'true',
+                    //mute: 'true'
+                });
+            });
+            $(".jwfullscreen").css("z-index", "-1");
+    </script>
+    <div>
+        <canvas id='txt_money_7dgt' style='width:220px; height:80px; position: absolute; left:125px; top:724px'></canvas>
+        <canvas id='txt_total_7dgt' style='width:220px; height:80px; position: absolute; left:363px; top:724px'></canvas>
+    </div>
+
+    <div id='txt_money_7dgt_' style='width:277px; height:32px; position: absolute; left:315px; top:906px'></div>
+    <div id='txt_total_7dgt_' style='width:277px; height:32px; position: absolute; left:603px; top:906px'></div>  
+    <script>
+        digit7_total(txt_money_7dgt_, 0, 12);  /// 배팅배당금 coin량 7segment현시 (초기값 0)
+        digit7_total(txt_total_7dgt_, 1000, 12);  /// usercoin잔액 7segment현시 (초기값 세션에서 읽은값)
+
+        display_segment("txt_money_7dgt", 0, 12, 15, 36, 4);     /// 배팅배당금 coin량 7segment현시 (초기값 0)    
+        display_segment("txt_total_7dgt", 1000, 12, 15, 36, 4);
+    </script>
+</body>
+</html>
